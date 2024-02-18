@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur Sinais</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #000000; /* Cor de fundo para a barra superior */
+        }
+
+        .header img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px; /* Diminui o espaço entre o cabeçalho e os quadrados */
+        }
+
+        .box {
+            width: 150px;
+            height: 200px;
+            border: 1px solid #000;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 20px; /* Adiciona espaço entre os quadrados */
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+        }
+
+        .progress-bar-container {
+            height: 20px;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: red;
+        }
+
+        .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="logo.png" alt="Logo">
+    <h1>Venha Conhecer os Melhores SINAIS da PG </h1>
+</div>
+
+<div class="container">
+    <div class="box" id="box1">
+        <img class="image" src="fortunetiger.jpg" alt="Imagem 1">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="bar1"></div>
+            <div class="percentage" id="percentage1">0%</div>
+        </div>
+    </div>
+    <div class="box" id="box2">
+        <img class="image" src="fortunerabbit.jpg" alt="Imagem 2">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="bar2"></div>
+            <div class="percentage" id="percentage2">0%</div>
+        </div>
+    </div>
+    <div class="box" id="box3">
+        <img class="image" src="fortunemouse.jpg" alt="Imagem 3">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="bar3"></div>
+            <div class="percentage" id="percentage3">0%</div>
+        </div>
+    </div>
+    <div class="box" id="box4">
+        <img class="image" src="fortuneox.jpg" alt="Imagem 4">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="bar4"></div>
+            <div class="percentage" id="percentage4">0%</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateProgressBar(barId, percentageId) {
+        var progressBar = document.getElementById(barId);
+        var percentageElement = document.getElementById(percentageId);
+        var randomPercentage = Math.floor(Math.random() * 101);
+        progressBar.style.width = randomPercentage + "%";
+        percentageElement.textContent = randomPercentage + "%";
+
+        if (randomPercentage <= 50) {
+            progressBar.style.backgroundColor = "red";
+        } else if (randomPercentage <= 70) {
+            progressBar.style.backgroundColor = "yellow";
+        } else {
+            progressBar.style.backgroundColor = "green";
+        }
+    }
+
+    setInterval(function() {
+        updateProgressBar("bar1", "percentage1");
+        updateProgressBar("bar2", "percentage2");
+        updateProgressBar("bar3", "percentage3");
+        updateProgressBar("bar4", "percentage4");
+    }, 200000);
+</script>
+
+</body>
+</html>
