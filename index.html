@@ -126,14 +126,43 @@
         } else {
             progressBar.style.backgroundColor = "green";
         }
+
+        // Armazenar a porcentagem atual no armazenamento local
+        localStorage.setItem(percentageId, randomPercentage);
     }
 
+    // Recuperar e exibir as porcentagens armazenadas ao recarregar a página
+    window.onload = function() {
+        for (var i = 1; i <= 4; i++) {
+            var percentageId = "percentage" + i;
+            var storedPercentage = localStorage.getItem(percentageId);
+
+            if (storedPercentage !== null) {
+                var progressBarId = "bar" + i;
+                var progressBar = document.getElementById(progressBarId);
+                var percentageElement = document.getElementById(percentageId);
+
+                progressBar.style.width = storedPercentage + "%";
+                percentageElement.textContent = storedPercentage + "%";
+
+                if (storedPercentage <= 50) {
+                    progressBar.style.backgroundColor = "red";
+                } else if (storedPercentage <= 70) {
+                    progressBar.style.backgroundColor = "yellow";
+                } else {
+                    progressBar.style.backgroundColor = "green";
+                }
+            }
+        }
+    };
+
+    // Update progress bars every 10 seconds (reduced time for testing)
     setInterval(function() {
         updateProgressBar("bar1", "percentage1");
         updateProgressBar("bar2", "percentage2");
         updateProgressBar("bar3", "percentage3");
         updateProgressBar("bar4", "percentage4");
-    }, 100000);
+    }, 10000);
 </script>
 
 </body>
