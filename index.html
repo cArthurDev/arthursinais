@@ -35,6 +35,12 @@
             margin-top: 20px; /* Diminui o espaço entre o cabeçalho e os quadrados */
         }
 
+        .container2 {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px; /* Diminui o espaço entre o cabeçalho e os quadrados */
+        }
+
         .box {
             width: 150px;
             height: 200px;
@@ -81,6 +87,7 @@
 </div>
 
 <div class="container">
+    <!-- Quadrados do 1 ao 4 -->
     <div class="box" id="box1">
         <img class="image" src="fortunetiger.jpg" alt="Imagem 1">
         <div class="progress-bar-container">
@@ -111,6 +118,24 @@
     </div>
 </div>
 
+<div class="container2">
+
+    <div class="box" id="box5">
+        <img class="image" src="fortunemidas.jpg" alt="Imagem 5">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="bar5"></div>
+            <div class="percentage" id="percentage5">0%</div>
+        </div>
+    </div>
+    <div class="box" id="box6">
+        <img class="image" src="mafia.jpg" alt="Imagem 6">
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="bar6"></div>
+            <div class="percentage" id="percentage6">0%</div>
+        </div>
+    </div>
+</div>
+
 <script>
     function updateProgressBar(barId, percentageId) {
         var progressBar = document.getElementById(barId);
@@ -133,7 +158,7 @@
 
     // Recuperar e exibir as porcentagens armazenadas ao recarregar a página
     window.onload = function() {
-        for (var i = 1; i <= 4; i++) {
+        for (var i = 1; i <= 8; i++) {
             var percentageId = "percentage" + i;
             var storedPercentage = localStorage.getItem(percentageId);
 
@@ -156,13 +181,12 @@
         }
     };
 
-    // Update progress bars every 10 seconds (reduced time for testing)
+
     setInterval(function() {
-        updateProgressBar("bar1", "percentage1");
-        updateProgressBar("bar2", "percentage2");
-        updateProgressBar("bar3", "percentage3");
-        updateProgressBar("bar4", "percentage4");
-    }, 30000);
+        for (var i = 1; i <= 8; i++) {
+            updateProgressBar("bar" + i, "percentage" + i);
+        }
+    }, 100000);
 </script>
 
 </body>
